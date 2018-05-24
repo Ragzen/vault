@@ -1,0 +1,1 @@
+A program egy igen ismert játék a Fallout jóval egyszerûbb feldolgozása, bunkerek állóképességét méri fel a környezõ ellenfelek és lakók függvényében
