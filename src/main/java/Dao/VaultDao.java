@@ -12,7 +12,7 @@ public interface VaultDao {
 	
 	public List<Vault> findByLocation(String name);
 	
-	public List<Vault> findByInstanceName(String name);
+	public List<Vault> findCaptive();
 	
 	public Vault persist(Vault vault);
 	

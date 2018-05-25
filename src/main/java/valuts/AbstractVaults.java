@@ -1,6 +1,6 @@
 package valuts;
 
-public abstract class AbstractVaults implements Vault {
+public class AbstractVaults implements Vault {
 
 	private int ID;
 
@@ -30,6 +30,14 @@ public abstract class AbstractVaults implements Vault {
 	 */
 	public int getID() {
 		return this.ID;
+	}
+
+	
+	/**
+	 * @param iD the iD to set
+	 */
+	public void setID(int iD) {
+		this.ID = iD;
 	}
 
 	/*
