@@ -16,6 +16,7 @@ public abstract class AbstractMonster implements Monster {
 		Name = name;
 		Location = location;
 		DamageLvl = damageLvl;
+		Number=number;
 	}
 
 	/*
@@ -54,15 +55,11 @@ public abstract class AbstractMonster implements Monster {
 		return Number;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see monsters.Monster#setDangerLvl()
-	 */
-	public void setDangerLvl() {
+	public int getDangerLvl() {
 		DangerLvl = DamageLvl * Number;
+		return DangerLvl;
 	}
-	
+
 	public boolean isDangerous() {
 		if(DamageLvl>0) {
 		return true;

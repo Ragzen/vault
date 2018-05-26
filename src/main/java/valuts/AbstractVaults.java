@@ -1,5 +1,14 @@
 package valuts;
 
+import java.security.Guard;
+import java.util.ArrayList;
+import java.util.List;
+
+import survivals.CombatUnit;
+import survivals.Guardian;
+import survivals.Settler;
+import survivals.Survival;
+
 public class AbstractVaults implements Vault {
 
 	private int ID;
@@ -10,17 +19,25 @@ public class AbstractVaults implements Vault {
 
 	private int DefenseLvl;
 
-	private int isthereFood;
+	private int Food;
 
-	private int isthereWater;
+	private int Water;
+
+	private List<CombatUnit> offense = new ArrayList<>();
+
+	private List<Guardian> defense = new ArrayList<>();
+
+	private List<Settler> resource = new ArrayList<>();
+
+	private int Population = 0;
 
 	public AbstractVaults(int id, int cap, String loc, int defLvl, int food, int water) {
 		this.ID = id;
 		this.Capacity = cap;
 		this.Location = loc;
 		this.DefenseLvl = defLvl;
-		this.isthereFood = food;
-		this.isthereWater = water;
+		this.Food = food;
+		this.Water = water;
 	}
 
 	/*
@@ -32,9 +49,44 @@ public class AbstractVaults implements Vault {
 		return this.ID;
 	}
 
-	
+	public void addOffense(CombatUnit unit) {
+		if (!isFull()) {
+			offense.add(unit);
+			Population++;
+		}
+	}
+
+	public void addDefense(Guardian unit) {
+		if (!isFull()) {
+			defense.add(unit);
+			Population++;
+		}
+	}
+
+	public void addResource(Settler unit) {
+		if (!isFull()) {
+			resource.add(unit);
+			Food += unit.getFood();
+			Water += unit.getWater();
+			Population++;
+		}
+	}
+
+	public void CalculateOverallDefense() {
+		int def = 0;
+		int off = 0;
+		for (Guardian guardian : defense) {
+			def += guardian.getEquipmentLvl();
+		}
+		for (CombatUnit combatUnit : offense) {
+			off += combatUnit.getEquipmentLvl();
+		}
+		addDefenseLvl(def + off);
+	}
+
 	/**
-	 * @param iD the iD to set
+	 * @param iD
+	 *            the iD to set
 	 */
 	public void setID(int iD) {
 		this.ID = iD;
@@ -49,6 +101,14 @@ public class AbstractVaults implements Vault {
 		return this.Capacity;
 	}
 
+	public boolean isFull() {
+		if (Population < Capacity) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -58,7 +118,7 @@ public class AbstractVaults implements Vault {
 		return this.DefenseLvl;
 	}
 
-	public void setDefenseLvl(int dL) {
+	public void addDefenseLvl(int dL) {
 		this.DefenseLvl += dL;
 	}
 
@@ -77,7 +137,7 @@ public class AbstractVaults implements Vault {
 	 * @see valuts.Vault#isWater()
 	 */
 	public boolean isWater() {
-		if (this.isthereWater != 0) {
+		if (this.Water != 0) {
 			return true;
 		}
 		return false;
@@ -89,7 +149,7 @@ public class AbstractVaults implements Vault {
 	 * @see valuts.Vault#isFood()
 	 */
 	public boolean isFood() {
-		if (this.isthereFood != 0) {
+		if (this.Food != 0) {
 			return true;
 		}
 		return false;
@@ -101,29 +161,28 @@ public class AbstractVaults implements Vault {
 	 * @see valuts.Vault#isCapative()
 	 */
 	public boolean isCapative() {
-		if (this.DefenseLvl > 0 || this.isthereFood != 0 || this.isthereWater != 0) {
+		if (this.DefenseLvl > 0 || this.Food > 0 || this.Water > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Capacity;
-		result = prime * result + DefenseLvl;
 		result = prime * result + ID;
-		result = prime * result + ((Location == null) ? 0 : Location.hashCode());
-		result = prime * result + isthereFood;
-		result = prime * result + isthereWater;
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -135,24 +194,9 @@ public class AbstractVaults implements Vault {
 		if (getClass() != obj.getClass())
 			return false;
 		AbstractVaults other = (AbstractVaults) obj;
-		if (Capacity != other.Capacity)
-			return false;
-		if (DefenseLvl != other.DefenseLvl)
-			return false;
 		if (ID != other.ID)
-			return false;
-		if (Location == null) {
-			if (other.Location != null)
-				return false;
-		} else if (!Location.equals(other.Location))
-			return false;
-		if (isthereFood != other.isthereFood)
-			return false;
-		if (isthereWater != other.isthereWater)
 			return false;
 		return true;
 	}
-	
-	
 
 }

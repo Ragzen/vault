@@ -6,7 +6,7 @@ public interface Survival {
 	
 	void setName(String name);
 	
-	String Specialization();
+	String getSpecialization();
 	
 	int getEquipmentLvl();
 	

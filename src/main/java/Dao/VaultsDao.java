@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
-
 import valuts.AbstractVaults;
 import valuts.Vault;
 import org.apache.logging.log4j.LogManager;
 
 import valuts.Vault;
 
-public class VaultsDao implements VaultDao {
+public class VaultsDao implements VaultDaoInterface {
 
 	private static final Logger LOG = LogManager.getLogger(Vault.class);
 

@@ -10,7 +10,7 @@ public interface Vault {
 	
 	int getDefenseLvl();
 	
-	void setDefenseLvl(int dL);
+	void addDefenseLvl(int dL);
 	
 	String getLocation();
 	

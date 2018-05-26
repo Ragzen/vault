@@ -4,7 +4,7 @@ import java.util.List;
 
 import valuts.Vault;
 
-public interface VaultDao {
+public interface VaultDaoInterface {
 
 	public Vault findOne(Integer id);
 	

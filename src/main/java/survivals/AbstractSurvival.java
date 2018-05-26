@@ -45,7 +45,7 @@ public abstract class AbstractSurvival implements Survival{
 	/* (non-Javadoc)
 	 * @see survivals.Survival#Specialization()
 	 */
-	public String Specialization() {
+	public String getSpecialization() {
 		return Specialization;
 	}
 
@@ -73,45 +73,7 @@ public abstract class AbstractSurvival implements Survival{
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + EquipmentLvl;
-		result = prime * result + ((Name == null) ? 0 : Name.hashCode());
-		result = prime * result + ((Specialization == null) ? 0 : Specialization.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AbstractSurvival other = (AbstractSurvival) obj;
-		if (EquipmentLvl != other.EquipmentLvl)
-			return false;
-		if (Name == null) {
-			if (other.Name != null)
-				return false;
-		} else if (!Name.equals(other.Name))
-			return false;
-		if (Specialization == null) {
-			if (other.Specialization != null)
-				return false;
-		} else if (!Specialization.equals(other.Specialization))
-			return false;
-		return true;
-	}
+	
 
 	
 	
