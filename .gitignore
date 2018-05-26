@@ -1,3 +1,8 @@
 /target/
 /.idea
 zoo.iml
+
+err.log
+messages.log
+
+/src/main/resources/hibernate.cfg.xml
