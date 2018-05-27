@@ -6,3 +6,4 @@ err.log
 messages.log
 
 /src/main/resources/hibernate.cfg.xml
+/src/main/java/config/Configuration.java

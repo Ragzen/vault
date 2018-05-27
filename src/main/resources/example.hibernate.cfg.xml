@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "-//Hibernate/Hibernate config.Configuration DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
@@ -11,7 +11,7 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbname</property>
         <property name="hibernate.connection.username">username</property>
         <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
 
         <!-- Configuring Connection Pool -->
         <property name="hibernate.c3p0.min_size">5</property>
@@ -23,7 +23,7 @@
         <!-- Other -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">validate</property>
 
         <mapping class="domains.VaultDomain"/>
     </session-factory>

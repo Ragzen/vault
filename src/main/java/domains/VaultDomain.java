@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "vault")
 public class VaultDomain {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     
